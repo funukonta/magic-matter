@@ -1,0 +1,172 @@
+[
+    {
+        "id": 1,
+        "title": "Level 1",
+        "world": "Dunia Es 🧊",
+        "description": "Si Wujud terjebak di Dunia Es! Bantu dia mencairkan es!",
+        "emoji": "🧊",
+        "transformation": "Mencair",
+        "question": "Es batu sedang membeku keras! Apa yang harus dilakukan agar es berubah menjadi air?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Masukkan ke freezer",
+                "emoji": "❄️"
+            },
+            {
+                "id": "b",
+                "text": "Panaskan dengan api",
+                "emoji": "🔥"
+            },
+            {
+                "id": "c",
+                "text": "Tiup dengan kipas",
+                "emoji": "💨"
+            },
+            {
+                "id": "d",
+                "text": "Diamkan saja",
+                "emoji": "😴"
+            }
+        ],
+        "correctAnswer": "b",
+        "explanation": "Es batu akan MENCAIR jika dipanaskan. Mencair adalah perubahan wujud dari PADAT menjadi CAIR karena kenaikan suhu. 🔥➡️💧",
+        "changeType": "Mencair (Padat → Cair)"
+    },
+    {
+        "id": 2,
+        "title": "Level 2",
+        "world": "Dunia Api 🔥",
+        "description": "Si Wujud sampai di Dunia Api! Bantu air menguap menjadi uap!",
+        "emoji": "🔥",
+        "transformation": "Menguap",
+        "question": "Air di panci sedang panas! Apa yang membuat air berubah jadi uap?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Masukkan es batu",
+                "emoji": "🧊"
+            },
+            {
+                "id": "b",
+                "text": "Tutup rapat panci",
+                "emoji": "🫕"
+            },
+            {
+                "id": "c",
+                "text": "Panaskan terus di kompor",
+                "emoji": "🔥"
+            },
+            {
+                "id": "d",
+                "text": "Aduk air pelan-pelan",
+                "emoji": "🥄"
+            }
+        ],
+        "correctAnswer": "c",
+        "explanation": "Air akan MENGUAP jika terus dipanaskan. Menguap adalah perubahan wujud dari CAIR menjadi GAS karena kenaikan suhu. 💧➡️💨",
+        "changeType": "Menguap (Cair → Gas)"
+    },
+    {
+        "id": 3,
+        "title": "Level 3",
+        "world": "Dunia Awan ☁️",
+        "transformation": "Mengembun",
+        "description": "Si Wujud melayang di Dunia Awan! Bantu uap air menjadi tetesan air!",
+        "emoji": "☁️",
+        "question": "Uap air bertemu udara dingin di awan! Apa yang terjadi pada uap air?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Uap menghilang",
+                "emoji": "👻"
+            },
+            {
+                "id": "b",
+                "text": "Uap berubah jadi es",
+                "emoji": "🧊"
+            },
+            {
+                "id": "c",
+                "text": "Uap menjadi tetesan air",
+                "emoji": "💧"
+            },
+            {
+                "id": "d",
+                "text": "Uap menjadi api",
+                "emoji": "🔥"
+            }
+        ],
+        "correctAnswer": "c",
+        "explanation": "Uap air akan MENGEMBUN menjadi tetesan air saat bertemu udara dingin. Mengembun adalah perubahan wujud dari GAS menjadi CAIR. 💨➡️💧",
+        "changeType": "Mengembun (Gas → Cair)"
+    },
+    {
+        "id": 4,
+        "title": "Level 4",
+        "world": "Dunia Beku ❄️",
+        "description": "Si Wujud masuk ke Dunia Beku! Bantu air menjadi es!",
+        "emoji": "❄️",
+        "transformation": "Membeku",
+        "question": "Kita punya air di dalam wadah. Bagaimana cara membuatnya jadi es?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Jemur di bawah matahari",
+                "emoji": "☀️"
+            },
+            {
+                "id": "b",
+                "text": "Masukkan ke freezer",
+                "emoji": "🧊"
+            },
+            {
+                "id": "c",
+                "text": "Aduk terus-menerus",
+                "emoji": "🌀"
+            },
+            {
+                "id": "d",
+                "text": "Tambahkan garam",
+                "emoji": "🧂"
+            }
+        ],
+        "correctAnswer": "b",
+        "explanation": "Air akan MEMBEKU menjadi es jika dimasukkan ke freezer. Membeku adalah perubahan wujud dari CAIR menjadi PADAT karena penurunan suhu. 💧➡️🧊",
+        "changeType": "Membeku (Cair → Padat)"
+    },
+    {
+        "id": 5,
+        "title": "Level 5",
+        "world": "Dunia Ajaib ✨",
+        "description": "Level terakhir! Si Wujud di Dunia Ajaib! Pecahkan misteri kapur barus!",
+        "emoji": "✨",
+        "transformation": "Menyublim",
+        "question": "Kapur barus di lemari lama-lama mengecil dan habis. Ke mana perginya kapur barus?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Dimakan rayap",
+                "emoji": "🐛"
+            },
+            {
+                "id": "b",
+                "text": "Mencair jadi air",
+                "emoji": "💧"
+            },
+            {
+                "id": "c",
+                "text": "Berubah langsung jadi gas",
+                "emoji": "💨"
+            },
+            {
+                "id": "d",
+                "text": "Menghilang begitu saja",
+                "emoji": "🫥"
+            }
+        ],
+        "correctAnswer": "c",
+        "explanation": "Kapur barus MENYUBLIM, yaitu berubah langsung dari PADAT menjadi GAS tanpa menjadi cair terlebih dahulu. Itulah mengapa kapur barus lama-lama habis! ✨➡️💨",
+        "changeType": "Menyublim (Padat → Gas)"
+    }
+]

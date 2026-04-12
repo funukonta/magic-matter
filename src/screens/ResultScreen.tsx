@@ -6,12 +6,15 @@ import { RootStackParamList } from "../../App";
 type Props = NativeStackScreenProps<RootStackParamList, "Result">;
 
 export default function ResultScreen({ navigation, route }: Props) {
-  const { userName, score, stars, totalLevels } = route.params;
+  const { userName, score, stars, totalLevels, result } = route.params;
 
   const getGrade = () => {
-    if (stars === totalLevels) return { emoji: "🏆", text: "SEMPURNA!", color: "#FFD93D" };
-    if (stars >= totalLevels * 0.8) return { emoji: "🌟", text: "Luar Biasa!", color: "#00C9A7" };
-    if (stars >= totalLevels * 0.6) return { emoji: "👏", text: "Bagus Sekali!", color: "#6C63FF" };
+    if (stars === totalLevels)
+      return { emoji: "🏆", text: "SEMPURNA!", color: "#FFD93D" };
+    if (stars >= totalLevels * 0.8)
+      return { emoji: "🌟", text: "Luar Biasa!", color: "#00C9A7" };
+    if (stars >= totalLevels * 0.6)
+      return { emoji: "👏", text: "Bagus Sekali!", color: "#6C63FF" };
     return { emoji: "💪", text: "Ayo Coba Lagi!", color: "#FF6584" };
   };
 
@@ -71,31 +74,27 @@ export default function ResultScreen({ navigation, route }: Props) {
           <Text className="font-bold text-gray-700 mb-3">
             📋 Ringkasan Level:
           </Text>
-          {["Mencair", "Menguap", "Mengembun", "Membeku", "Menyublim"].map(
-            (name, i) => (
-              <View
-                key={i}
-                className="flex-row items-center py-2 border-b border-gray-100"
-              >
-                <Text className="text-lg mr-2">{i < stars ? "✅" : "❌"}</Text>
-                <Text className="text-sm text-gray-600 flex-1">
-                  Level {i + 1}: {name}
-                </Text>
-              </View>
-            )
-          )}
+          {result.map((gameResult, i) => (
+            <View
+              key={i}
+              className="flex-row items-center py-2 border-b border-gray-100"
+            >
+              <Text className="text-lg mr-2">
+                {gameResult.isCorrect ? "✅" : "❌"}
+              </Text>
+              <Text className="text-sm text-gray-600 flex-1">
+                Level {i + 1}: {gameResult.levelTransformation}
+              </Text>
+            </View>
+          ))}
         </View>
 
         {/* Buttons */}
         <TouchableOpacity
           className="bg-[#6C63FF] rounded-xl py-4 w-full items-center mb-3"
-          onPress={() =>
-            navigation.replace("Game", { userName })
-          }
+          onPress={() => navigation.replace("Game", { userName })}
         >
-          <Text className="text-white font-bold text-base">
-            🔄 Main Lagi
-          </Text>
+          <Text className="text-white font-bold text-base">🔄 Main Lagi</Text>
         </TouchableOpacity>
 
         <TouchableOpacity

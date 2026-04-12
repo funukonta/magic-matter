@@ -24,6 +24,9 @@ export default function GameScreen({ navigation, route }: Props) {
   const [showCorrectModal, setShowCorrectModal] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const scaleAnim = useRef(new Animated.Value(1)).current;
+  const [results, setResults] = useState<
+    { levelTransformation: string; isCorrect: boolean }[]
+  >([]);
 
   const level: LevelData = gameLevels[currentLevel];
 
@@ -50,8 +53,10 @@ export default function GameScreen({ navigation, route }: Props) {
       const pointsEarned = 20;
       setScore((prev) => prev + pointsEarned);
       setStars((prev) => prev + 1);
+      addGameResult(true);
       setShowCorrectModal(true);
     } else {
+      addGameResult(false);
       setShowModal(true);
     }
   };
@@ -60,6 +65,24 @@ export default function GameScreen({ navigation, route }: Props) {
     setShowCorrectModal(false);
     setSelectedAnswer(null);
 
+    goToNext();
+  };
+
+  const handleRetry = () => {
+    setShowModal(false);
+    setSelectedAnswer(null);
+
+    goToNext();
+  };
+
+  const addGameResult = (isCorrect: boolean) => {
+    setResults((prev) => [
+      ...prev,
+      { levelTransformation: level.transformation, isCorrect },
+    ]);
+  };
+
+  const goToNext = () => {
     if (currentLevel < gameLevels.length - 1) {
       setCurrentLevel((prev) => prev + 1);
     } else {
@@ -68,13 +91,9 @@ export default function GameScreen({ navigation, route }: Props) {
         score,
         stars,
         totalLevels: gameLevels.length,
+        result: results,
       });
     }
-  };
-
-  const handleRetry = () => {
-    setShowModal(false);
-    setSelectedAnswer(null);
   };
 
   const progressPercent = ((currentLevel + 1) / gameLevels.length) * 100;
@@ -191,7 +210,9 @@ export default function GameScreen({ navigation, route }: Props) {
               onPress={handleRetry}
             >
               <Text className="text-white font-bold text-base">
-                🔄 Coba Lagi
+                {currentLevel < gameLevels.length - 1
+                  ? "➡️ Level Selanjutnya"
+                  : "🏆 Lihat Hasil"}
               </Text>
             </TouchableOpacity>
           </View>

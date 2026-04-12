@@ -12,6 +12,11 @@ import RangkumanScreen from "./src/screens/RangkumanScreen";
 import CPTPScreen from "./src/screens/CPTPScreen";
 import TimPengembangScreen from "./src/screens/TimPengembangScreen";
 
+type gameResult = {
+  levelTransformation: string;
+  isCorrect: boolean;
+};
+
 export type RootStackParamList = {
   Home: undefined;
   Materi: { userName: string };
@@ -21,6 +26,7 @@ export type RootStackParamList = {
     score: number;
     stars: number;
     totalLevels: number;
+    result: gameResult[];
   };
   Video: { userName: string };
   Rangkuman: { userName: string };
@@ -45,7 +51,11 @@ export default function App() {
         <Stack.Screen
           name="Materi"
           component={MateriScreen}
-          options={{ headerShown: true, title: "Materi", headerTintColor: "#6C63FF" }}
+          options={{
+            headerShown: true,
+            title: "Materi",
+            headerTintColor: "#6C63FF",
+          }}
         />
         <Stack.Screen
           name="Game"
@@ -60,22 +70,38 @@ export default function App() {
         <Stack.Screen
           name="Video"
           component={VideoScreen}
-          options={{ headerShown: true, title: "Video Pembelajaran", headerTintColor: "#00C9A7" }}
+          options={{
+            headerShown: true,
+            title: "Video Pembelajaran",
+            headerTintColor: "#00C9A7",
+          }}
         />
         <Stack.Screen
           name="Rangkuman"
           component={RangkumanScreen}
-          options={{ headerShown: true, title: "Rangkuman", headerTintColor: "#FFD93D" }}
+          options={{
+            headerShown: true,
+            title: "Rangkuman",
+            headerTintColor: "#FFD93D",
+          }}
         />
         <Stack.Screen
           name="CPTP"
           component={CPTPScreen}
-          options={{ headerShown: true, title: "CP & TP", headerTintColor: "#FF6584" }}
+          options={{
+            headerShown: true,
+            title: "CP & TP",
+            headerTintColor: "#FF6584",
+          }}
         />
         <Stack.Screen
           name="TimPengembang"
           component={TimPengembangScreen}
-          options={{ headerShown: true, title: "Tim Pengembang", headerTintColor: "#6EC1E4" }}
+          options={{
+            headerShown: true,
+            title: "Tim Pengembang",
+            headerTintColor: "#6EC1E4",
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

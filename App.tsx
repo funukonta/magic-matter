@@ -11,6 +11,7 @@ import VideoScreen from "./src/screens/VideoScreen";
 import RangkumanScreen from "./src/screens/RangkumanScreen";
 import CPTPScreen from "./src/screens/CPTPScreen";
 import TimPengembangScreen from "./src/screens/TimPengembangScreen";
+import SlideViewerScreen from "./src/screens/SlideViewerScreen";
 
 type gameResult = {
   levelTransformation: string;
@@ -32,6 +33,7 @@ export type RootStackParamList = {
   Rangkuman: { userName: string };
   CPTP: { userName: string };
   TimPengembang: { userName: string };
+  SlideViewer: { userName: string };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -102,6 +104,11 @@ export default function App() {
             title: "Tim Pengembang",
             headerTintColor: "#6EC1E4",
           }}
+        />
+        <Stack.Screen
+          name="SlideViewer"
+          component={SlideViewerScreen}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

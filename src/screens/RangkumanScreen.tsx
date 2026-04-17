@@ -1,11 +1,70 @@
 import React from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../App";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Rangkuman">;
 
-export default function RangkumanScreen({ route }: Props) {
+// ─── Cycle Diagram Component ─────────────────────────────────────────────────
+function CycleDiagram() {
+  const changes = [
+    { label: "Mencair", from: "PADAT", to: "CAIR", emoji: "🧊→💧", bg: "#FF6B6B" },
+    { label: "Membeku", from: "CAIR", to: "PADAT", emoji: "💧→🧊", bg: "#6EC1E4" },
+    { label: "Menguap", from: "CAIR", to: "GAS", emoji: "💧→💨", bg: "#FF9F43" },
+    { label: "Mengembun", from: "GAS", to: "CAIR", emoji: "💨→💧", bg: "#26de81" },
+    { label: "Menyublim", from: "PADAT", to: "GAS", emoji: "🪨→💨", bg: "#6C63FF" },
+    { label: "Mengkristal", from: "GAS", to: "PADAT", emoji: "💨→🪨", bg: "#fd79a8" },
+  ];
+
+  return (
+    <View className="bg-white rounded-2xl p-5 mb-4">
+      <Text className="text-base font-bold text-[#6C63FF] mb-4 text-center">
+        🔄 Diagram Perubahan Wujud
+      </Text>
+
+      {/* 3 state boxes */}
+      <View className="flex-row justify-around mb-5">
+        {[
+          { label: "PADAT", emoji: "🪨", color: "#FF6B6B" },
+          { label: "CAIR", emoji: "💧", color: "#4ECDC4" },
+          { label: "GAS", emoji: "💨", color: "#A78BFA" },
+        ].map((s) => (
+          <View
+            key={s.label}
+            className="items-center rounded-2xl px-4 py-3 w-[30%]"
+            style={{ backgroundColor: s.color + "20", borderWidth: 2, borderColor: s.color }}
+          >
+            <Text className="text-3xl">{s.emoji}</Text>
+            <Text className="text-xs font-bold mt-1" style={{ color: s.color }}>
+              {s.label}
+            </Text>
+          </View>
+        ))}
+      </View>
+
+      {/* Change cards grid */}
+      <View className="flex-row flex-wrap justify-between gap-y-2">
+        {changes.map((c) => (
+          <View
+            key={c.label}
+            className="rounded-xl p-3 w-[48%]"
+            style={{ backgroundColor: c.bg + "18", borderLeftWidth: 3, borderLeftColor: c.bg }}
+          >
+            <Text className="text-base mb-1">{c.emoji}</Text>
+            <Text className="text-sm font-bold" style={{ color: c.bg }}>
+              {c.label}
+            </Text>
+            <Text className="text-xs text-gray-500">
+              {c.from} → {c.to}
+            </Text>
+          </View>
+        ))}
+      </View>
+    </View>
+  );
+}
+
+export default function RangkumanScreen({ route, navigation }: Props) {
   const userName = route.params?.userName ?? "Teman";
 
   return (
@@ -89,14 +148,27 @@ export default function RangkumanScreen({ route }: Props) {
           </Text>
         </View>
 
+        {/* Cycle Diagram */}
+        <CycleDiagram />
+
         {/* Closing */}
-        <View className="bg-[#6C63FF] rounded-2xl p-5 mb-8">
+        <View className="bg-[#6C63FF] rounded-2xl p-5 mb-4">
           <Text className="text-white text-center text-sm leading-5">
             Perubahan wujud benda adalah proses alami yang terjadi di sekitar
             kita setiap hari. Dengan memahami konsep ini, kita bisa lebih
             menghargai fenomena alam! 🌍✨
           </Text>
         </View>
+
+        {/* CTA */}
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Game", { userName })}
+          className="rounded-2xl py-4 items-center mb-8"
+          style={{ backgroundColor: "#6C63FF" }}
+          activeOpacity={0.85}
+        >
+          <Text className="text-white font-bold text-base">🎮 Mulai Kuis Sekarang!</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );

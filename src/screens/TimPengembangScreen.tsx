@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, Image, ImageSourcePropType } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../App";
 
@@ -8,7 +8,8 @@ type Props = NativeStackScreenProps<RootStackParamList, "TimPengembang">;
 interface TeamMember {
   name: string;
   role: string;
-  emoji: string;
+  emoji?: string;
+  image?: ImageSourcePropType;
   color: string;
 }
 
@@ -16,19 +17,19 @@ const teamMembers: TeamMember[] = [
   {
     name: "Aulia Luthfi Dewi Pramesta",
     role: "Pengembang Konten",
-    emoji: "👩‍💻",
+    image: require("../../assets/members/aulia.jpeg"),
     color: "#FF6B6B",
   },
   {
     name: "Tutik Ernawati",
     role: "Pengembang Konten",
-    emoji: "👩‍🏫",
+    image: require("../../assets/members/tutik.jpeg"),
     color: "#6C63FF",
   },
   {
     name: "Erwin Ardianzah",
     role: "Pengembang Konten",
-    emoji: "👨‍💻",
+    image: require("../../assets/members/erwin.jpeg"),
     color: "#00C9A7",
   },
   {
@@ -40,7 +41,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Dr. Anatri Desstya, M.Pd",
     role: "Pembimbing",
-    emoji: "👩‍🎓",
+    image: require("../../assets/members/anatri.jpeg"),
     color: "#FF6584",
   },
 ];
@@ -80,10 +81,18 @@ export default function TimPengembangScreen({ route }: Props) {
             style={{ borderLeftColor: member.color }}
           >
             <View
-              className="w-14 h-14 rounded-full items-center justify-center mr-4"
+              className="w-14 h-14 rounded-full items-center justify-center mr-4 overflow-hidden"
               style={{ backgroundColor: member.color + "20" }}
             >
-              <Text className="text-3xl">{member.emoji}</Text>
+              {member.image ? (
+                <Image
+                  source={member.image}
+                  className="w-14 h-14 rounded-full"
+                  style={{ width: 56, height: 56, borderRadius: 28 }}
+                />
+              ) : (
+                <Text className="text-3xl">{member.emoji}</Text>
+              )}
             </View>
             <View className="flex-1">
               <Text className="text-base font-bold text-gray-800">

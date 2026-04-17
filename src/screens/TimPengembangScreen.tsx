@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, ScrollView, Image, ImageSourcePropType } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  ImageSourcePropType,
+} from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../App";
 
@@ -53,15 +59,16 @@ export default function TimPengembangScreen({ route }: Props) {
     <View className="flex-1 bg-[#F0F4FF]">
       {/* Header */}
       <View className="bg-[#6EC1E4] px-6 pt-10 pb-5">
-        <Text className="text-white text-xl font-bold">
-          👨‍💻 Tim Pengembang
-        </Text>
+        <Text className="text-white text-xl font-bold">👨‍💻 Tim Pengembang</Text>
         <Text className="text-white/80 text-sm mt-1">
           Kenalan dengan pembuat aplikasi ini, {userName}!
         </Text>
       </View>
 
-      <ScrollView className="flex-1 px-4 pt-6" showsVerticalScrollIndicator={false}>
+      <ScrollView
+        className="flex-1 px-4 pt-6"
+        showsVerticalScrollIndicator={false}
+      >
         {/* Team Logo */}
         <View className="items-center mb-6">
           <Text className="text-5xl mb-2">🔮</Text>

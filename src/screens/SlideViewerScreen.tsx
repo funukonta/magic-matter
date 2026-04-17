@@ -51,9 +51,7 @@ function AnimatedSlideContent({
   }, [isActive]);
 
   return (
-    <Animated.View
-      style={{ flex: 1, opacity, transform: [{ translateY }] }}
-    >
+    <Animated.View style={{ flex: 1, opacity, transform: [{ translateY }] }}>
       {children}
     </Animated.View>
   );
@@ -65,8 +63,10 @@ function CoverSlide({ slide }: { slide: Slide }) {
       className="flex-1 items-center justify-center px-8"
       style={{ backgroundColor: slide.bg }}
     >
-      <Text className="text-xs font-bold tracking-widest uppercase mb-4 opacity-70"
-        style={{ color: slide.textColor }}>
+      <Text
+        className="text-xs font-bold tracking-widest uppercase mb-4 opacity-70"
+        style={{ color: slide.textColor }}
+      >
         {slide.tag}
       </Text>
       <Text className="text-8xl mb-6">{slide.emoji}</Text>
@@ -77,8 +77,14 @@ function CoverSlide({ slide }: { slide: Slide }) {
         {slide.title}
       </Text>
       {slide.subtitle && (
-        <View className="mt-3 px-4 py-2 rounded-full" style={{ backgroundColor: "rgba(255,255,255,0.2)" }}>
-          <Text className="text-base font-semibold" style={{ color: slide.textColor }}>
+        <View
+          className="mt-3 px-4 py-2 rounded-full"
+          style={{ backgroundColor: "rgba(255,255,255,0.2)" }}
+        >
+          <Text
+            className="text-base font-semibold"
+            style={{ color: slide.textColor }}
+          >
             {slide.subtitle}
           </Text>
         </View>
@@ -121,7 +127,10 @@ function BulletSlide({ slide }: { slide: Slide }) {
           className="rounded-2xl p-4 mb-4"
           style={{ backgroundColor: "rgba(255,255,255,0.2)" }}
         >
-          <Text className="text-sm leading-5 text-center" style={{ color: slide.textColor }}>
+          <Text
+            className="text-sm leading-5 text-center"
+            style={{ color: slide.textColor }}
+          >
             {slide.body}
           </Text>
         </View>
@@ -133,7 +142,10 @@ function BulletSlide({ slide }: { slide: Slide }) {
             className="rounded-xl px-4 py-3"
             style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
           >
-            <Text className="text-sm leading-5" style={{ color: slide.textColor }}>
+            <Text
+              className="text-sm leading-5"
+              style={{ color: slide.textColor }}
+            >
               {b}
             </Text>
           </View>
@@ -185,7 +197,10 @@ function DiagramSlide({ slide }: { slide: Slide }) {
             style={{ backgroundColor: "rgba(255,255,255,0.3)" }}
           >
             <Text className="text-3xl">{s.emoji}</Text>
-            <Text className="text-xs font-bold mt-1" style={{ color: slide.textColor }}>
+            <Text
+              className="text-xs font-bold mt-1"
+              style={{ color: slide.textColor }}
+            >
               {s.label}
             </Text>
           </View>
@@ -200,10 +215,16 @@ function DiagramSlide({ slide }: { slide: Slide }) {
             className="rounded-xl px-3 py-2 w-[47%]"
             style={{ backgroundColor: "rgba(255,255,255,0.2)" }}
           >
-            <Text className="text-xs font-bold" style={{ color: slide.textColor }}>
+            <Text
+              className="text-xs font-bold"
+              style={{ color: slide.textColor }}
+            >
               {p.name}
             </Text>
-            <Text className="text-xs opacity-80" style={{ color: slide.textColor }}>
+            <Text
+              className="text-xs opacity-80"
+              style={{ color: slide.textColor }}
+            >
               {p.from} → {p.to}
             </Text>
           </View>
@@ -213,7 +234,13 @@ function DiagramSlide({ slide }: { slide: Slide }) {
   );
 }
 
-function ClosingSlide({ slide, onGoToGame }: { slide: Slide; onGoToGame: () => void }) {
+function ClosingSlide({
+  slide,
+  onGoToGame,
+}: {
+  slide: Slide;
+  onGoToGame: () => void;
+}) {
   return (
     <View
       className="flex-1 items-center justify-center px-8"
@@ -227,19 +254,31 @@ function ClosingSlide({ slide, onGoToGame }: { slide: Slide; onGoToGame: () => v
         {slide.title}
       </Text>
       {slide.subtitle && (
-        <Text className="text-base text-center mb-4 opacity-80" style={{ color: slide.textColor }}>
+        <Text
+          className="text-base text-center mb-4 opacity-80"
+          style={{ color: slide.textColor }}
+        >
           {slide.subtitle}
         </Text>
       )}
       {slide.body && (
-        <Text className="text-sm text-center leading-6 mb-6 opacity-90" style={{ color: slide.textColor }}>
+        <Text
+          className="text-sm text-center leading-6 mb-6 opacity-90"
+          style={{ color: slide.textColor }}
+        >
           {slide.body}
         </Text>
       )}
       <View className="gap-y-2 w-full mb-8">
         {slide.bullets?.map((b, i) => (
-          <View key={i} className="rounded-xl px-4 py-3" style={{ backgroundColor: "rgba(255,255,255,0.2)" }}>
-            <Text className="text-sm" style={{ color: slide.textColor }}>{b}</Text>
+          <View
+            key={i}
+            className="rounded-xl px-4 py-3"
+            style={{ backgroundColor: "rgba(255,255,255,0.2)" }}
+          >
+            <Text className="text-sm" style={{ color: slide.textColor }}>
+              {b}
+            </Text>
           </View>
         ))}
       </View>
@@ -249,7 +288,9 @@ function ClosingSlide({ slide, onGoToGame }: { slide: Slide; onGoToGame: () => v
         style={{ backgroundColor: "rgba(255,255,255,0.9)" }}
         activeOpacity={0.8}
       >
-        <Text className="text-[#6C63FF] font-bold text-base">🎮 Mulai Kuis!</Text>
+        <Text className="text-[#6C63FF] font-bold text-base">
+          🎮 Mulai Kuis!
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -298,21 +339,27 @@ export default function SlideViewerScreen({ navigation, route }: Props) {
           useNativeDriver: false,
         }).start();
       }
-    }
+    },
   ).current;
 
   const goNext = () => {
     if (currentIndex < slides.length - 1) {
       // Medium impact on button press
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-      flatRef.current?.scrollToIndex({ index: currentIndex + 1, animated: true });
+      flatRef.current?.scrollToIndex({
+        index: currentIndex + 1,
+        animated: true,
+      });
     }
   };
 
   const goPrev = () => {
     if (currentIndex > 0) {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-      flatRef.current?.scrollToIndex({ index: currentIndex - 1, animated: true });
+      flatRef.current?.scrollToIndex({
+        index: currentIndex - 1,
+        animated: true,
+      });
     }
   };
 
@@ -367,7 +414,13 @@ export default function SlideViewerScreen({ navigation, route }: Props) {
         onViewableItemsChanged={onViewableItemsChanged}
         viewabilityConfig={{ itemVisiblePercentThreshold: 50 }}
         renderItem={({ item, index }) => (
-          <View style={{ width: SCREEN_WIDTH, height: SCREEN_HEIGHT, paddingTop: 80 }}>
+          <View
+            style={{
+              width: SCREEN_WIDTH,
+              height: SCREEN_HEIGHT,
+              paddingTop: 80,
+            }}
+          >
             <SlideItem
               slide={item}
               isActive={index === currentIndex}
@@ -388,7 +441,9 @@ export default function SlideViewerScreen({ navigation, route }: Props) {
           className="rounded-xl px-5 py-3"
           style={{
             backgroundColor:
-              currentIndex === 0 ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.25)",
+              currentIndex === 0
+                ? "rgba(255,255,255,0.1)"
+                : "rgba(255,255,255,0.25)",
           }}
           activeOpacity={0.7}
         >

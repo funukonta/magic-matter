@@ -8,12 +8,48 @@ type Props = NativeStackScreenProps<RootStackParamList, "Rangkuman">;
 // ─── Cycle Diagram Component ─────────────────────────────────────────────────
 function CycleDiagram() {
   const changes = [
-    { label: "Mencair", from: "PADAT", to: "CAIR", emoji: "🧊→💧", bg: "#FF6B6B" },
-    { label: "Membeku", from: "CAIR", to: "PADAT", emoji: "💧→🧊", bg: "#6EC1E4" },
-    { label: "Menguap", from: "CAIR", to: "GAS", emoji: "💧→💨", bg: "#FF9F43" },
-    { label: "Mengembun", from: "GAS", to: "CAIR", emoji: "💨→💧", bg: "#26de81" },
-    { label: "Menyublim", from: "PADAT", to: "GAS", emoji: "🪨→💨", bg: "#6C63FF" },
-    { label: "Mengkristal", from: "GAS", to: "PADAT", emoji: "💨→🪨", bg: "#fd79a8" },
+    {
+      label: "Mencair",
+      from: "PADAT",
+      to: "CAIR",
+      emoji: "🧊→💧",
+      bg: "#FF6B6B",
+    },
+    {
+      label: "Membeku",
+      from: "CAIR",
+      to: "PADAT",
+      emoji: "💧→🧊",
+      bg: "#6EC1E4",
+    },
+    {
+      label: "Menguap",
+      from: "CAIR",
+      to: "GAS",
+      emoji: "💧→💨",
+      bg: "#FF9F43",
+    },
+    {
+      label: "Mengembun",
+      from: "GAS",
+      to: "CAIR",
+      emoji: "💨→💧",
+      bg: "#26de81",
+    },
+    {
+      label: "Menyublim",
+      from: "PADAT",
+      to: "GAS",
+      emoji: "🪨→💨",
+      bg: "#6C63FF",
+    },
+    {
+      label: "Mengkristal",
+      from: "GAS",
+      to: "PADAT",
+      emoji: "💨→🪨",
+      bg: "#fd79a8",
+    },
   ];
 
   return (
@@ -32,7 +68,11 @@ function CycleDiagram() {
           <View
             key={s.label}
             className="items-center rounded-2xl px-4 py-3 w-[30%]"
-            style={{ backgroundColor: s.color + "20", borderWidth: 2, borderColor: s.color }}
+            style={{
+              backgroundColor: s.color + "20",
+              borderWidth: 2,
+              borderColor: s.color,
+            }}
           >
             <Text className="text-3xl">{s.emoji}</Text>
             <Text className="text-xs font-bold mt-1" style={{ color: s.color }}>
@@ -48,7 +88,11 @@ function CycleDiagram() {
           <View
             key={c.label}
             className="rounded-xl p-3 w-[48%]"
-            style={{ backgroundColor: c.bg + "18", borderLeftWidth: 3, borderLeftColor: c.bg }}
+            style={{
+              backgroundColor: c.bg + "18",
+              borderLeftWidth: 3,
+              borderLeftColor: c.bg,
+            }}
           >
             <Text className="text-base mb-1">{c.emoji}</Text>
             <Text className="text-sm font-bold" style={{ color: c.bg }}>
@@ -77,7 +121,10 @@ export default function RangkumanScreen({ route, navigation }: Props) {
         </Text>
       </View>
 
-      <ScrollView className="flex-1 px-4 pt-6" showsVerticalScrollIndicator={false}>
+      <ScrollView
+        className="flex-1 px-4 pt-6"
+        showsVerticalScrollIndicator={false}
+      >
         {/* Greeting */}
         <View className="bg-white rounded-2xl p-5 mb-4">
           <Text className="text-3xl text-center mb-3">🎉</Text>
@@ -134,7 +181,8 @@ export default function RangkumanScreen({ route, navigation }: Props) {
             🌧️ Contoh dalam Kehidupan: Siklus Hujan
           </Text>
           <Text className="text-sm text-gray-600 leading-5">
-            Tahukah kamu? Hujan adalah contoh nyata perubahan wujud benda!{"\n\n"}
+            Tahukah kamu? Hujan adalah contoh nyata perubahan wujud benda!
+            {"\n\n"}
             1️⃣ Air di laut, sungai, dan danau{" "}
             <Text className="font-bold">menguap</Text> karena panas matahari.
             {"\n"}
@@ -167,7 +215,9 @@ export default function RangkumanScreen({ route, navigation }: Props) {
           style={{ backgroundColor: "#6C63FF" }}
           activeOpacity={0.85}
         >
-          <Text className="text-white font-bold text-base">🎮 Mulai Kuis Sekarang!</Text>
+          <Text className="text-white font-bold text-base">
+            🎮 Mulai Kuis Sekarang!
+          </Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
